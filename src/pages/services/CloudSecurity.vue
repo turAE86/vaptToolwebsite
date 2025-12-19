@@ -1,29 +1,34 @@
 <template>
-  <main class="pt-32 px-6 max-w-4xl mx-auto">
-    <h1 class="text-5xl font-bold text-[#39ff14] mb-6">
-      Cloud Security
-    </h1>
-    <p class="text-gray-400">
-      Misconfiguration reviews, IAM audits, and cloud threat modeling.
-    </p>
-  </main>
+  <ServiceLayout
+    title="Cloud Security"
+    description="Security assessments for AWS, Azure, and GCP cloud environments."
+    :coverage="coverage"
+    :deliverables="deliverables"
+  />
 </template>
 
 <script>
-import { onMounted } from 'vue'
-import { useSeo } from '../../utils/useSeo'
+import ServiceLayout from '../../components/ServiceLayout.vue'
 
 export default {
   name: 'CloudSecurityPage',
+  components: { ServiceLayout },
   setup() {
-    onMounted(() => {
-      useSeo({
-        title: 'Cloud Security Services | DOTDNA',
-        description:
-          'Secure your AWS, Azure, and GCP infrastructure with configuration reviews, IAM audits, and threat modeling.'
-      })
-    })
+    const coverage = [
+      'IAM & access control review',
+      'Cloud misconfiguration analysis',
+      'Storage & network security',
+      'Logging & monitoring gaps'
+    ]
+
+    const deliverables = [
+      'Cloud risk assessment report',
+      'Misconfiguration findings',
+      'Compliance mapping',
+      'Remediation roadmap'
+    ]
+
+    return { coverage, deliverables }
   }
 }
-
 </script>

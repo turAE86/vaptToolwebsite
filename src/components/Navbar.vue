@@ -11,6 +11,10 @@
         <router-link to="/services" class="hover:text-white">Services</router-link>
         <router-link to="/about" class="hover:text-white">About</router-link>
         <router-link to="/contact" class="hover:text-white">Contact</router-link>
+        <router-link to="/login" class="px-5 py-2 rounded-full border border-[#39ff14]
+         text-[#39ff14] hover:bg-[#39ff14] hover:text-black transition font-medium"> Login </router-link>
+        <router-link v-if="!isLoggedIn" to="/login">Login</router-link>
+
       </div>
 
     </div>
