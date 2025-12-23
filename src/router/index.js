@@ -9,7 +9,7 @@ import AboutPage from '../pages/About.vue'
 import ContactPage from '../pages/Contact.vue'
 import VerifyOtp from '../pages/VerifyOtp.vue'
 import LoginPage from '../pages/Login.vue'
-import RegisterPage from '../pages/Register.vue'
+import RegisterPage from '../pages/RegisterPage.vue'
 import PhoneOtp from '../pages/PhoneOtp.vue'
 
 
