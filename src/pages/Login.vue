@@ -17,7 +17,7 @@
     />
 
     <button
-      @click="login"
+      @click="l"
       class="w-full py-3 border border-[#39ff14] text-[#39ff14]
              rounded hover:bg-[#39ff14] hover:text-black transition">
       Login

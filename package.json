@@ -8,8 +8,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^1.13.2",
     "core-js": "^3.8.3",
     "lucide": "^0.561.0",
+    "lucide-vue-next": "^0.562.0",
     "mongodb": "^7.0.0",
     "twilio": "^5.11.1",
     "vue": "^3.2.13",

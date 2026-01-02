@@ -1,29 +1,38 @@
-import express from "express";
-import connectDB from "./db.js";
-import dotenv from "dotenv";
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config();
 
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
-require('dotenv').config()
+// Initialize App
+const app = express();
 
-const app = express()
-app.use(cors())
-app.use(express.json())
+// Middleware
+app.use(express.json()); // Body parser
+app.use(cors()); // Enable CORS for frontend communication
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('✅ MongoDB Atlas Connected'))
-  .catch(err => console.error('❌ MongoDB Error:', err))
-
-
-app.listen(5000, () => {
-  console.log('Server running on port 5000')
-})
-
-app.use('/api/auth', require('./routes/auth'))
-require('dotenv').config()
-
-dotenv.config();
+// Database Connection
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log('✅ MongoDB Connected Successfully');
+  } catch (err) {
+    console.error('❌ MongoDB Connection Error:', err.message);
+    process.exit(1);
+  }
+};
 connectDB();
 
-app.listen(5000, () => console.log("Server running"));
+// Routes
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/services', require('./routes/services'));
+
+// Base Route
+app.get('/', (req, res) => {
+  res.send('VAPT Tool API is running...');
+});
+
+// Start Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
